@@ -1,0 +1,15 @@
+<script>
+  app.controller('recipesCtrl', ['$scope', '$http', function($scope, $http) {
+    var input = ['chicken', 'rice'];
+    $scope.search = function() {
+      $http.post('recipesapi/search', input).success(function(data) {
+        $scope.recipes = data;
+      });
+    };
+  }]);
+</script>
+<main ng-controller='recipesCtrl'>
+  <button ng-click="search()">Search me some recipes</button>
+  <h1>Recipes</h1>
+  {{ recipes }}
+</main>
