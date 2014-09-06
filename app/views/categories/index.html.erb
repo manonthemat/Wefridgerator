@@ -47,10 +47,28 @@
       <h1 class="container-list-title text-center"><%= @group.name %> Items</h1>
 
       <!--  calls items filter funtion in js -->
-      <div class="btn btn-primary btn-sm" ng-click="filter('All')">All Items</div>
-      <div class="btn btn-primary btn-sm" ng-click="filter('Refridgerator')">Refridgerator</div>
-      <div class="btn btn-primary btn-sm" ng-click="filter('Freezer')">Freezer</div>
-      <div class="btn btn-primary btn-sm" ng-click="filter('Pantry')">Pantry</div>
+  
+        <!-- filter options dropdown -->
+        <div class="dropdown">
+          <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-toggle="dropdown">
+            {{filter_view}}
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+            <div class="btn-group">
+              <button type="button" class="btn btn-primary btn-sm" ng-click="filter('All')">All Items</button>
+              <button type="button" class="btn btn-primary btn-sm" ng-click="filter('Refridgerator')">Refridgerator</button>
+              <button type="button" class="btn btn-primary btn-sm" ng-click="filter('Freezer')">Freezer</button>
+              <button type="button" class="btn btn-primary btn-sm" ng-click="filter('Pantry')">Pantry</button>
+            </div>
+          </ul>
+        </div> 
+   
+      <!-- end button group -->
+
+
+
+       
 
       <% @items.each  do |item| %>
       
