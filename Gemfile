@@ -2,6 +2,9 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails'
 
+# When you HTTParty, you must party hard!
+gem 'httparty'
+
 # Use postgresql as the database for Active Record
 gem 'pg'
 
