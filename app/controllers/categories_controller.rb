@@ -19,7 +19,7 @@ class CategoriesController < ApplicationController
     @freezer_items = @items.where(container_type: "Freezer").all.map(&:id).to_json
     @pantry_items = Item.where(container_type: "Pantry").all.map(&:id).to_json
     @shopping_items = Item.where(container_type: "Shopping List").all.map(&:id).to_json
-    
+    @other_category = @categories.where(name: "Other").first
     # response for message board
     respond_to do |format|
       format.html
