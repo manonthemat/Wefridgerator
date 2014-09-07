@@ -5,12 +5,13 @@ app.controller('dragNdrop', ['$scope', '$http', function($scope, $http) {
   window.onload = function() {
     $scope.page_start = 0
     $scope.page_end = 5
+    console.log("items!!" +$scope.all_items.length);
     
     $scope.active_cats = function() {
       return $scope.cats.slice($scope.page_start, $scope.page_end);
     }
 
-    $scope.cat_length = $scope.cats.length
+    // $scope.cat_length = $scope.cats.length
     $scope.end_button = true;
     $scope.start_button = false;
     
@@ -35,10 +36,31 @@ app.controller('dragNdrop', ['$scope', '$http', function($scope, $http) {
       console.log("end: " + $scope.page_end);
     }
 
+    // filter items
     $scope.filter_view = "All";
+    $scope.item_count = $scope.all_items.length;
     // default view is All
     $scope.filter = function(filter) {
       $scope.filter_view = filter;
+
+      // sets item count for filter
+      switch(filter) {
+        case "All":
+          $scope.item_count = $scope.all_items.length;
+          break;
+        case "Refridgerator":
+          $scope.item_count = $scope.refridgerator_items.length;
+          break;
+        case "Freezer":
+          $scope.item_count = $scope.freezer_items.length;
+          break;
+        case "Pantry":
+          $scope.item_count = $scope.pantry_items.length;
+          break;
+        case "Shopping List":
+          $scope.item_count = $scope.shopping_list_items.length;
+          break;
+      }
     }
 
     $scope.editModal = function(category, item) {
@@ -132,12 +154,10 @@ app.controller('dragNdrop', ['$scope', '$http', function($scope, $http) {
 
       this.className = "";
       
-      
+      // sets the path to add new item to container
       $scope.dropZoneLink = "http://localhost:3000/categories/"+$scope.categorySelected+"/items/new_item";
-      console.log("dropped " + data);
+ 
       console.log($scope.dropZoneLink);
-      //window.location.href = e.dataTransfer.getData('text');
-      // window.location.href = $scope.dropZoneLink;
       $('.modal').modal({remote: $scope.dropZoneLink});
       });
 
@@ -185,11 +205,8 @@ app.controller('dragNdrop', ['$scope', '$http', function($scope, $http) {
       if (e.stopPropagation) e.stopPropagation(); 
 
       this.className = "";
-      
-      // $scope.dropZoneLink = "<%#= new_category_item_path($scope.category) %>";
+      // sets the path to add new item to shopping list
       $scope.dropZoneLink = "http://localhost:3000/categories/"+$scope.categorySelected+"/items/new_sl";
-      console.log("dropped " + data);
-      console.log($scope.dropZoneLink);
       //window.location.href = e.dataTransfer.getData('text');
       // window.location.href = $scope.dropZoneLink;
       $('.modal').modal({remote: $scope.dropZoneLink});
