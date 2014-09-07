@@ -24,15 +24,12 @@
           <ul class="dropdown-menu" role="menu">
             <% if current_user %>
               <% if current_groups.length >= 1 %>
-                <li class="divider"></li>
                 <% current_groups.each do |g|  %>
-                  <li> 
-                  <%= link_to( g.name, group_categories_url(g), data: { no_turbolink: true}) %> 
-                  </li>
+                  <li><%= link_to g.name, group_categories_url(g) %></li>
+                  <li class="divider"></li>
                 <% end %>
               <% end %>
             <% end %>
-            <li class="divider"></li>
             <li><a href="<%= new_group_path %>">Create New Group</a></li>
           </ul>
         </li>

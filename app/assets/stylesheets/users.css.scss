@@ -6,9 +6,9 @@
 	height: 60px;
 }
 
-
 .hero_image {
 	background: url(WF_kitcen.png); 
+	background-size: cover;
 	margin: 0 auto;
 	width: 960px;
 	height: 480px;
@@ -16,21 +16,21 @@
 }
 
 .flys {
-background: url(flies2.png);
-background-repeat: no-repeat;
-margin-left: 583px;
-margin-top: -437px;
-width: 100px;
-height: 100px;
-
+	background: url(flies2.png);
+	background-repeat: no-repeat;
+	margin-left: 583px;
+	margin-top: -437px;
+	width: 100px;
+	height: 100px;
 }
+
 .sparkle {
-background: url(sparkle.png);
-background-repeat: no-repeat;
-width: 200px;
-height: 200px;
-margin-left: 685px;
-opacity: 0;
+	background: url(sparkle.png);
+	background-repeat: no-repeat;
+	width: 200px;
+	height: 200px;
+	margin-left: 685px;
+	opacity: 0;
 }
 
 .sidea {

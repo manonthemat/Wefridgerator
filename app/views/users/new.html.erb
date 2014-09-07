@@ -1,21 +1,16 @@
-<div class="nav_bar">
-</div>
 
-<div class="hero_image">
-</div>
+<br><!-- <div class="nav_bar"></div> -->
 
-<div class="flys">
-</div>
+<div class="hero_image"></div>
 
-<div class="sparkle">
-</div>
+<div class="flys"></div>
 
-<div class="wrap">
-<div class="sidea">
-</div>
-<div class="sideb">
-</div> 
-</div>
+<div class="sparkle"></div>
+
+<!-- <div class="wrap">
+    <div class="sidea"></div>
+    <div class="sideb"></div> 
+</div> -->
 
 
 <% if current_user %>
@@ -24,7 +19,7 @@
     <% end %>
 <% else %>
     <section class="user-form">
-        <h1>Sign Up !</h1>
+        <h1>Sign Up!</h1>
         <%= form_for @user do |f| %>
         	<%= f.text_field :first_name, placeholder: 'First name', class: 'form-control' %>
         	<%= f.text_field :last_name, placeholder: 'Last name', class: 'form-control' %>
