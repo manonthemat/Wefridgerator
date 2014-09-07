@@ -5,7 +5,7 @@ class RecipesController < ApplicationController
 
   def search_with_items_in_wefridgerator
     milksay
-    ingredients = Item.where(user: current_user).all.map(&:name)
+    ingredients = params['recipe']['_json']
     if @@cache.include?ingredients
       result = @@cache[ingredients]
     else
