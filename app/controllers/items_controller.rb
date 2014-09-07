@@ -26,11 +26,28 @@ class ItemsController < ApplicationController
     #This container type refers to the param name we put in the Items show view
     @item.container_type = "Shopping List" if @item.container_type == nil
     #Assigns container type to items dropped in the shopping list
+
     if @item.save
       
       redirect_to group_categories_path(@category.group_id)
     else
       render 'new'
+    end
+  end
+
+  def create_speech
+    @category = Category.find(params[:id])
+    @item = Item.new(item_params)
+    @item.user = current_user
+    @item.category = @category
+    @item.container_type = "Refridgerator"
+
+    if @item.save
+      @item_saved = "it saved"
+      redirect_to "group_categories_path(@group)"
+    else
+      @item_saved = "it didn't save"
+      redirect_to "new_group_path"
     end
   end
 

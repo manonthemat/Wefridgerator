@@ -37,6 +37,8 @@ end
 # Use ActiveModel has_secure_password
  gem 'bcrypt', '~> 3.1.7'
 
+ gem 'haml-rails', '~> 0.5.3'
+
 # Use unicorn as the app server
 # gem 'unicorn'
 
@@ -45,9 +47,9 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-
-gem 'bootstrap-sass', '~> 3.2.0'
 gem "font-awesome-rails"
+gem 'bootstrap-sass', '~> 3.2.0'
+
 
 # for heroku deployment
 gem 'rails_12factor', group: :production

@@ -1,3 +1,45 @@
 // Place all the styles related to the recipes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// Colors
+$main-color: #4aabcc;
+
+.recipes {
+  margin-bottom: 1em;
+
+  h1 {
+    font-family: 'Lemon', serif;
+  }
+
+  h4 {
+    font-size: 1.25em;
+  }
+
+  a {
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .btn {
+    display: block;
+    margin: 0 auto;
+  }
+
+  .recipe-image {
+    border-radius: 4px;
+    height: 200px;
+    margin-bottom: 1em;
+    overflow: hidden;
+    width: 100%;
+
+    img {
+      cursor: pointer;
+      width: 100%;
+    }
+  }
+
+  .modal {
+    color: #000;
+  }
+}

@@ -1,0 +1,135 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require font-awesome
+ *= require_tree .
+ */
+
+// Bootstrap
+@import 'bootstrap-sprockets';
+@import 'bootstrap';
+
+// Colors
+$main-color: #4aabcc;
+$title-color: #21aab8;
+$link-color: #3d1429;
+
+// Mixins
+@mixin translate-center($x, $y) {
+  left: $x;
+  position: fixed;
+  top: $y;
+  -webkit-transform: translateX(-$x) translateY(-$y);
+  -moz-transform: translateX(-$x) translateY(-$y);
+  -ms-transform: translateX(-$x) translateY(-$y);
+  transform: translateX(-$x) translateY(-$y);
+}
+
+@mixin block-shadow($v, $a) {
+  -webkit-box-shadow: 0 $v rgba(0, 0, 0, $a);
+  -moz-box-shadow: 0 $v rgba(0, 0, 0, $a);
+  box-shadow: 0 $v rgba(0, 0, 0, $a);
+}
+
+// Body
+body {
+  background: $main-color;
+  color: #fff;
+
+  .test1 {
+    background: pink;
+  }
+
+  .test2 {
+    background: yellow;
+  }
+
+  a {
+    color: $link-color;
+  }
+
+  // Navbar
+  .logo {
+    margin-top: -6px;
+  }
+
+  .navbar-default {
+    background: darken($main-color, 30%);
+    border: none;
+    border-radius: 0;
+    color: #fff;
+  }
+
+  .navbar-nav {
+    color: #fff;
+  }
+
+  .navbar-inverse .navbar-nav > a,
+  .navbar-inverse .navbar-nav > .open > a,
+  .navbar-inverse .navbar-nav > .open > a:hover,
+  .navbar-inverse .navbar-nav > .open > a:focus {
+    background-color: transparent;
+    color: #fff;
+  }
+
+  .navbar-inverse .navbar-nav > .active > a,
+  .navbar-inverse .navbar-nav > .active > a:hover {
+    background-color: transparent;
+  }
+
+  .navbar-inverse .navbar-nav > li > a {
+    color: #fff;
+  }
+
+  .dropdown-menu {
+    border: none;
+    @include block-shadow(.25em, .5);
+
+    li:first-child {
+      padding-top: 6px;
+    }
+
+    li:last-child {
+      padding-bottom: 6px;
+    }
+  }
+
+  // User Forms
+  .user-form {
+    background: rgba(255, 255, 255, .95);
+    border-radius: 1.5em;
+    @include block-shadow(.5em, .5);
+    @include translate-center(50%, 40%);
+    padding: 1em;
+    width: 22em;
+
+    h1 {
+      color: #21aab8;
+      font-family: 'Lemon', serif;
+      margin: 0 auto .35em;
+      text-align: center;
+    }
+
+    .form-control {
+      margin-bottom: .5em;
+    }
+
+    .btn-submit {
+      background: #21aab8;
+      color: #fff;
+      font-family: 'Hammersmith One', serif;
+      display: block;
+      margin: 1em auto 0;
+      text-align: center;
+      width: 50%;
+    }
+  }
+}
