@@ -67,41 +67,22 @@ app.controller('dragNdrop', ['$scope', '$http', function($scope, $http) {
       $scope.item = item;
       console.log("item: "+ $scope.item);
       $scope.category = category;
-      
+// turn the first link on for heroku
+      // $('.modal').modal({remote: "http://okfridge.herokuapp.com/categories/" + $scope.category +"/items/" + $scope.item + "/edit"});
+// turn the first link on for local development
       console.log("test modal");
-      $('.modal').modal({remote: "http://okfridge.herokuapp.com/categories/" + $scope.category +"/items/" + $scope.item + "/edit"});
+      $('.modal').modal({remote: "http://localhost:3000/categories/" + $scope.category +"/items/" + $scope.item + "/edit"});
     }
-
-    $scope.deleteItem = function(category, item, item_id ) {
-      $scope.item_id = item_id;
-      $scope.category = category;
-      console.log(item);
-      if (item.id) {
-        console.log("inside the if");
-        // saved member
-        $http.delete("http://okfridge.herokuapp.com/categories/" + $scope.category +"/items/" + $scope.item_id);
-          // success(function(data, status, headers, config) {
-          // // this callback will be called asynchronously
-          // // when the response is available
-          //  }).
-          //   error(function(data, status, headers, config) {
-          // // called asynchronously if an error occurs
-          // // or server returns response with an error status.
-          // });
-      }
-      //   $http.delete("http://localhost:3000/categories/" + $scope.category +"/items/" + $scope.item_id);
-      // }
-      else {
-        // unsaved member, remove it from members.
-        $scope.itemData.splice( $.inArray(item, $scope.itemData), 1 );
-      }
-    };
 
     $scope.setCategory = function(category){
        $scope.categorySelected = category;
     }
     console.log("this is the container: " + $scope.group);
-    $http.get("http://okfridge.herokuapp.com/groups/" + $scope.group + "/api/items").success(function (data) {
+// turn the first link on for heroku
+    // $http.get("http://okfridge.herokuapp.com/groups/" + $scope.group + "/api/items").success(function (data) {
+// turn the first link on for local development
+    $http.get("http:/localhost:3000.com/groups/" + $scope.group + "/api/items").success(function (data) {
+
     //Convert data to array.
       $scope.itemData = angular.fromJson(angular.fromJson(data));
       console.log($scope.itemData);
@@ -155,7 +136,10 @@ app.controller('dragNdrop', ['$scope', '$http', function($scope, $http) {
       this.className = "";
       
       // sets the path to add new item to container
-      $scope.dropZoneLink = "http://okfridge.herokuapp.com/categories/"+$scope.categorySelected+"/items/new_item";
+// turn the first link on for heroku
+      // $scope.dropZoneLink = "http://okfridge.herokuapp.com/categories/"+$scope.categorySelected+"/items/new_item";
+// turn the second link on for local development
+      $scope.dropZoneLink = "http://localhost:3000/categories/"+$scope.categorySelected+"/items/new_item";
  
       console.log($scope.dropZoneLink);
       $('.modal').modal({remote: $scope.dropZoneLink});
@@ -206,9 +190,11 @@ app.controller('dragNdrop', ['$scope', '$http', function($scope, $http) {
 
       this.className = "";
       // sets the path to add new item to shopping list
-      $scope.dropZoneLink = "http://okfridge.herokuapp.com/categories/"+$scope.categorySelected+"/items/new_sl";
-      //window.location.href = e.dataTransfer.getData('text');
-      // window.location.href = $scope.dropZoneLink;
+// turn the first link on for heroku
+      // $scope.dropZoneLink = "http://okfridge.herokuapp.com/categories/"+$scope.categorySelected+"/items/new_sl";
+// turn the first link on for local development
+      $scope.dropZoneLink = "http://localhost:3000/categories/"+$scope.categorySelected+"/items/new_sl";
+
       $('.modal').modal({remote: $scope.dropZoneLink});
     });
   };
