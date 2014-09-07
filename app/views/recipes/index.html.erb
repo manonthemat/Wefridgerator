@@ -9,6 +9,9 @@
     $scope.get_recipe = function(rid) {
       $http.get('recipesapi/get/' + rid).success(function(data) {
         $scope.recipe = data;
+        setTimeout(function() {
+          $('#' + $scope.recipe.recipe.recipe_id).modal('show');
+        }, 100);
       });
     };
   }]);
@@ -40,8 +43,6 @@
         </div>
       </div>
     </div>
-
-    <!-- NOTE: have to double click for the modal to appear. get_recipe(rid) doesn't read modal pull up fast enough? -->
     
     <!-- Modal -->
     <div class="modal fade" id="{{ recipe.recipe.recipe_id }}" tabindex="-1" role="dialog" aria-labelledby="{{ recipe.recipe.recipe_id }}-label" aria-hidden="true">
