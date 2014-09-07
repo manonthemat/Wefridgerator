@@ -12,14 +12,58 @@
       });
     };
   }]);
+
+  app.filter('row', function() {
+    return function(arrayLength) {
+      arrayLength = Math.ceil(arrayLength);
+      var arr = new Array(arrayLength);
+      for (var i = 0; i < arrayLength; i++) {
+        arr[i] = i;
+      }
+      return arr;
+    };
+  });
 </script>
-<main ng-controller='recipesCtrl'>
-  <button ng-click="search()">Search me some recipes</button>
-  <h1>Recipes</h1>
-  <div ng-repeat="r in recipes.recipes">
-      <h2><a ng-href="{{r.source_url}}" target="_blank">{{r.title}}</a></h2>
-      <img ng-click="get_recipe(r.recipe_id)" ng-src="{{r.image_url}}" />
+
+<main class="recipes" ng-controller='recipesCtrl'>
+  <button class="btn btn-primary" ng-click="search()">Search me some recipes</button>
+
+  <div ng-show="recipes">
+    <div class="row">
+      <h1>Recipes</h1>
+      <div class="row" ng-repeat="r in (recipes.recipes.length/3 | row)">
+        <div class="col-md-4" ng-repeat="r in recipes.recipes.slice(3*$index, 3*$index + 3)">
+          <h4><a ng-href="{{r.source_url}}" target="_blank">{{r.title}}</a></h4>
+          <div class="recipe-image">
+            <img ng-click="get_recipe(r.recipe_id)" ng-src="{{r.image_url}}" data-toggle="modal" data-target="#{{ recipe.recipe.recipe_id }}" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- NOTE: have to double click for the modal to appear. get_recipe(rid) doesn't read modal pull up fast enough? -->
+    
+    <!-- Modal -->
+    <div class="modal fade" id="{{ recipe.recipe.recipe_id }}" tabindex="-1" role="dialog" aria-labelledby="{{ recipe.recipe.recipe_id }}-label" aria-hidden="true">
+      <div class="modal-dialog modal-md">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <h1 class="modal-title" id="{{ recipe.recipe.recipe_id }}-label">Recipe Details</h1>
+          </div>
+          <div class="modal-body">
+            <h4>{{ recipe.recipe.title }}</h4>
+            <div class="recipe-image">
+              <a ng-href="{{ recipe.recipe.source_url }}"><img ng-src="{{ recipe.recipe.image_url }}" /></a>
+            </div>
+            <div ng-repeat="i in recipe.recipe.ingredients">{{ i }}<br></div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
-  <h1>Recipe Details</h1>
-  {{ recipe }}
 </main>

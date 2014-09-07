@@ -1,0 +1,43 @@
+
+<br><!-- <div class="nav_bar"></div> -->
+
+<div class="hero_image"></div>
+
+<div class="flys"></div>
+
+<div class="sparkle"></div>
+
+<!-- <div class="wrap">
+    <div class="sidea"></div>
+    <div class="sideb"></div> 
+</div> -->
+
+
+<% if current_user %>
+    <% current_groups.each do |g| %>
+        <li><%= link_to g.name, group_path(g) %></li>
+    <% end %>
+<% else %>
+    <section class="user-form">
+        <h1>Sign Up!</h1>
+        <%= form_for @user do |f| %>
+        	<%= f.text_field :first_name, placeholder: 'First name', class: 'form-control' %>
+        	<%= f.text_field :last_name, placeholder: 'Last name', class: 'form-control' %>
+        	<%= f.text_field :email, placeholder: 'Email', class: 'form-control' %>
+        	<%= f.password_field :password, placeholder: 'Password', class: 'form-control' %>
+        	<%= f.password_field :password_confirmation, placeholder: 'Re-type password', class: 'form-control' %>
+        	<%= f.text_field :zipcode, placeholder: 'Zipcode', class: 'form-control' %>
+        	<%= f.submit "Submit", class: 'btn btn-submit' %>
+        <% end %>
+    </section>
+<% end %>
+<<<<<<< HEAD
+
+
+
+   
+
+
+
+=======
+>>>>>>> c5437c8eb7df076aa9361958c580c4017cc8763b
