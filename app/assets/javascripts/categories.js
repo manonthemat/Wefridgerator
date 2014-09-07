@@ -389,12 +389,6 @@ app.controller('dragNdrop', ['$scope', '$http', function($scope, $http) {
                 console.log("boo" + response);
             }
           );
-          // $.ajax({
-          //   type:'POST', 
-          //   url: 'http://localhost:3000/categories/" + $scope.othercat + "/items/new_speech_item', 
-          //   data: $.param({ item: {name: item_to_add, category: $scope.othercat}})
-          // });
-          // console.log(request);
         }
       }
     }

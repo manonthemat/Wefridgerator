@@ -11,9 +11,7 @@ class ItemsController < ApplicationController
 
   def new_container_item
     @item = Item.new
-
     @category = Category.find(params[:id])
-
   end
 
   def new_shopping_list_item
@@ -43,16 +41,6 @@ class ItemsController < ApplicationController
     @item.user = current_user
     @item.category = @category
     @item.container_type = "Refridgerator"
-
-    # respond_to do |format|
-    #   if @item.save
-    #     format.html { redirect_to @item, notice: 'item was successfully created.' }
-    #     format.json { render json: @item, status: :created, location: @item }
-    #   else
-    #     format.html { redirect_to: new_group_path }
-    #     format.json { render json: @item.errors, status: :unprocessable_entity }
-    #   end
-    # end
 
     if @item.save
       @item_saved = "it saved"
