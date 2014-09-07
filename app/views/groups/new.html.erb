@@ -1,9 +1,7 @@
-<h1>Make a new fridge group</h1>
-
-<%= form_for @group do |f| %>
-  <%= f.text_field :name, placeholder: "Name your group" %>
-
-
-  <%= f.submit "Add fridge group!" %>
-
-<% end %>
+<section class="user-form">
+    <h1>Fridge Group</h1>
+    <%= form_for @group do |f| %>
+        <%= f.text_field :name, placeholder: 'Name your group', class: 'form-control' %>
+        <%= f.submit "Submit", class: 'btn btn-submit' %>
+    <% end %>
+</section>
