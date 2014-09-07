@@ -24,7 +24,7 @@ function readTemp() {
 }
 
 function postTemp(freshFoodTemp, freezerTemp) {
-  var url = 'http://localhost:3000/freezer/'+freshFoodTemp+'/'+freezerTemp;
+  var url = 'http://okfridge.herokuapp.com/freezer/'+freshFoodTemp+'/'+freezerTemp;
   http.get(url, function(resp) {
 //    console.log(resp);
   });
