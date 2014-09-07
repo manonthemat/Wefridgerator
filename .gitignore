@@ -19,5 +19,6 @@
 
 *.swp
 /vendor
+node_server/node_modules
 
 Gemfile.lock
