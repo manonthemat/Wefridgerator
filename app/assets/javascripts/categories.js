@@ -68,10 +68,10 @@ app.controller('dragNdrop', ['$scope', '$http', function($scope, $http) {
       console.log("item: "+ $scope.item);
       $scope.category = category;
 // turn the first link on for heroku
-      // $('.modal').modal({remote: "http://okfridge.herokuapp.com/categories/" + $scope.category +"/items/" + $scope.item + "/edit"});
+      $('.modal').modal({remote: "http://okfridge.herokuapp.com/categories/" + $scope.category +"/items/" + $scope.item + "/edit"});
 // turn the first link on for local development
-      console.log("test modal");
-      $('.modal').modal({remote: "http://localhost:3000/categories/" + $scope.category +"/items/" + $scope.item + "/edit"});
+      // console.log("test modal");
+      // $('.modal').modal({remote: "http://localhost:3000/categories/" + $scope.category +"/items/" + $scope.item + "/edit"});
     }
 
     $scope.setCategory = function(category){
@@ -79,9 +79,9 @@ app.controller('dragNdrop', ['$scope', '$http', function($scope, $http) {
     }
     console.log("this is the container: " + $scope.group);
 // turn the first link on for heroku
-    // $http.get("http://okfridge.herokuapp.com/groups/" + $scope.group + "/api/items").success(function (data) {
+    $http.get("http://okfridge.herokuapp.com/groups/" + $scope.group + "/api/items").success(function (data) {
 // turn the first link on for local development
-    $http.get("http://localhost:3000/groups/" + $scope.group + "/api/items").success(function (data) {
+    // $http.get("http://localhost:3000/groups/" + $scope.group + "/api/items").success(function (data) {
 
     //Convert data to array.
       $scope.itemData = angular.fromJson(angular.fromJson(data));
@@ -136,13 +136,13 @@ app.controller('dragNdrop', ['$scope', '$http', function($scope, $http) {
       this.className = "";
       
       // sets the path to add new item to container
-// turn the first link on for heroku
-      // $scope.dropZoneLink = "http://okfridge.herokuapp.com/categories/"+$scope.categorySelected+"/items/new_item";
+turn the first link on for heroku
+      $scope.dropZoneLink = "http://okfridge.herokuapp.com/categories/"+$scope.categorySelected+"/items/new_item";
 // turn the second link on for local development
-      $scope.dropZoneLink = "http://localhost:3000/categories/"+$scope.categorySelected+"/items/new_item";
+      // $scope.dropZoneLink = "http://localhost:3000/categories/"+$scope.categorySelected+"/items/new_item";
  
       console.log($scope.dropZoneLink);
-      $('.modal').modal({remote: $scope.dropZoneLink});
+        $('.modal').modal({remote: $scope.dropZoneLink});
       });
 
     var dropZoneTwo = document.querySelector('#drop-target-two');
@@ -191,9 +191,9 @@ app.controller('dragNdrop', ['$scope', '$http', function($scope, $http) {
       this.className = "";
       // sets the path to add new item to shopping list
 // turn the first link on for heroku
-      // $scope.dropZoneLink = "http://okfridge.herokuapp.com/categories/"+$scope.categorySelected+"/items/new_sl";
+      $scope.dropZoneLink = "http://okfridge.herokuapp.com/categories/"+$scope.categorySelected+"/items/new_sl";
 // turn the first link on for local development
-      $scope.dropZoneLink = "http://localhost:3000/categories/"+$scope.categorySelected+"/items/new_sl";
+      // $scope.dropZoneLink = "http://localhost:3000/categories/"+$scope.categorySelected+"/items/new_sl";
 
       $('.modal').modal({remote: $scope.dropZoneLink});
     });
@@ -382,7 +382,7 @@ app.controller('dragNdrop', ['$scope', '$http', function($scope, $http) {
           //           });
       
           $http({
-            url: "http://localhost:3000/categories/" + $scope.othercat + "/items/speech",
+            url: "http://okfridge.herokuapp.com/categories/" + $scope.othercat + "/items/speech",
             method: "POST",
             data: { item: { name: item_to_add }}
           })
