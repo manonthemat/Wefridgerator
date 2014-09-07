@@ -13,7 +13,7 @@ p {
 }
 
 .nav_bar {
-	background: url(WEfridge_logo.png);
+	background: url(logo.png);
 	background-repeat: no-repeat;
 	padding: 0 auto;
 	width: 970px;
@@ -22,12 +22,13 @@ p {
 	border-width: 2px;
 	border-style: dotted;
 	margin: 0 auto;
+	text-align: center;
 }
 
-.logo {
+/*.logo {
 	background: url(WEFridge_logo.png);
 
-}
+}*/
 
 .wefridge_bg {
   background: url(WEKitchen3.png);

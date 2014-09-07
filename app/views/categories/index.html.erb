@@ -3,19 +3,29 @@
 
 	<div id="dd-elements">
 		<div id="drag-elements">
-
-      <!-- initializes current groups id -->
+      
+      <!-- initializes current variables into angular -->
       <p ng-init="group = <%= @group.id %>"></p>
+      <p ng-init="all_items = <%= @all_items %>"></p>
+      <p ng-init="refridgerator_items = <%= @refridgerator_items %>"></p>
+      <p ng-init="freezer_items = <%= @freezer_items %>"></p>
+      <p ng-init="pantry_items = <%= @pantry_items %>"></p>
+      <p ng-init="shopping_list_items = <%= @shopping_items %>"></p>
 
       <!-- initalizes category array -->
 			<p ng-init="cats = <%= @category_array %>"></p>
-			 
-      <!-- Back a page in pagination -->
+			<div class="container">	 
+        
+      <!-- displays all categories by pagination-->
       <div class="row">
         <div class="col-md-8 col-md-offset-2 text-center food-items">
-  				<a ng-repeat="c in active_cats() | orderBy:'name':false" ng-href"{{dropZoneLink}}">
+
+          <!-- categories are droppable -->
+  				<a ng-repeat='c in active_cats()| orderBy:"name":false' ng-href'{{dropZoneLink}}'>
   					<div class="col-md-6 col-md-offset-3 category" draggable="true" ng-mousedown="setCategory(c.id)">
-  						<div id="info">	<img ng-src="/assets/{{c.image}}.png">
+  						<div id="info">	
+                <img ng-src="/assets/{{c.image}}.png"/>
+                <!-- shows category name on hover -->
   						  <div id="dropdown">{{c.name}}</div>				
   					  </div>
   					</div>
@@ -23,41 +33,54 @@
         </div>
       </div>
 
-
-      <!-- Advance page in pagination -->
+      <!-- Back a page in pagination -->
       <div class="row">
         <div class="col-md-6">
-          <div class="btn btn-primary col-md-1 col-md-offset-5" ng-show="start_button" ng-click="page_move(-5)">&lt;&lt;</div>
+          <div class="btn btn-primary col-md-1 col-md-offset-5" ng-show="start_button" ng-click="page_move(-5)">&laquo;</div>
         </div>
-        <div class="col-md-6">
-          <div class="btn btn-primary col-md-1 col-md-offset-5" ng-show="end_button" ng-click="page_move(5)">&gt;&gt;</div>
+        <!-- Advance page in pagination -->
+        <div class="col-md-6 ">
+          <div class="btn btn-primary col-md-1 col-md-offset-5" ng-show="end_button" ng-click="page_move(5)">&raquo;</div>
         </div>
       </div>
-
-  	</div>
-  </div> 
-
-
-
+		</div>
+	</div>
 
   <!-- items index -->
   <div class="row">
-
-    <div class="col-md-4">
+    <div class="col-md-3 col-md-offset-1">
       <h1 class="container-list-title text-center"><%= @group.name %> Items</h1>
-      <div class="btn btn-primary btn-sm" ng-click="filter('All')">All Items</div>
-      <div class="btn btn-primary btn-sm" ng-click="filter('Refridgerator')">Refridgerator</div>
-      <div class="btn btn-primary btn-sm" ng-click="filter('Freezer')">Freezer</div>
-      <div class="btn btn-primary btn-sm" ng-click="filter('Pantry')">Pantry</div>
+        <!-- filter options dropdown -->
+        <div class="dropdown">
+          <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-toggle="dropdown">
+            {{filter_view}} Items&nbsp;&nbsp;<div class="pull-right"><span class="badge">{{item_count}}</span>
+            <span class="caret"></span></div>
+          </button>
+          <ul class="dropdown-menu item-filter-dropdown" role="menu" aria-labelledby="dropdownMenu1">
+            <div class="btn-group">
+              <!--  calls items filter funtion in js -->
+              <button type="button" class="btn btn-primary btn-sm" ng-click="filter('All')">All</button>
+              <button type="button" class="btn btn-primary btn-sm" ng-click="filter('Refridgerator')">Refridgerator</button>
+              <button type="button" class="btn btn-primary btn-sm" ng-click="filter('Freezer')">Freezer</button>
+              <button type="button" class="btn btn-primary btn-sm" ng-click="filter('Pantry')">Pantry</button>
+            </div>
+          </ul>
+        </div> 
+   
+      <!-- end button group -->
 
-      <% @items.each do |item| %>
+      <% @items.each  do |item| %>
       
+        <!--  only displays items belonging to that group -->
         <% item_group = item.category.group.id %>
         <% if item_group == @group.id %>
-    
+
         <% if item.container_type != "Shopping List" %>
-        
+
+          <!-- filters items depending on container type -->
           <li ng-show='filter_view == "All" || filter_view == "<%= item.container_type %>"'>
+
+            <!-- lists all items in kitchen -->
             <div class="col-md-2 item-image-mini">
               <%= image_tag item.category.image + ".png", class: "img-responsive", size: "30x30" %>
             </div>
@@ -72,74 +95,63 @@
       <% end %>
     </div>
 
+    <!--   drop target 1 (add to kitchen) -->
     <div class="col-md-4">
-
-      <div class="row">
-      	<div class="col-md-6">
-      		<p class="container-title">Add to Kitchen</p>
-          <div id="drop-target-one"></div>
-      	</div>
-      	
-      	<div class="col-md-6">
-      		<p class="container-title">Add to Shopping List</p>
-          <div id="drop-target-two"></div>
-      	</div>
-      </div>
-    
+    	<div class="col-md-6 text-center">
+    		<p class="container-title">Add to Kitchen</p>
+        <div id="drop-target-one"></div>
+    	</div>
+    	
+      <!--   drop target 2 (add to shopping list) -->
+    	<div class="col-md-6 text-center">
+    		<p class="container-title">Add to Shopping List</p>
+        <div id="drop-target-two"></div>
+    	</div>
     </div>
-
     <div class="col-md-4">
       <h1 class="container-list-title text-center">Shopping list</h1>
 
+
+      <!--   display all items in the shopping list -->
       <% @shopping_list_items.each do |item| %>
-
-      <% item_group = item.category.group.id %>
+        <% item_group = item.category.group.id %>
         <% if item_group == @group.id %>
-        <% if item.container_type == "Shopping List" %>
-        <li><strong><%= item.name %></strong>  
-      
-          <button class="btn btn-success btn-xs" data-toggle="modal" data-remote="<%= edit_category_item_url(item.category_id, item) %>" data-target=".bs-example-modal1-lg">Bought!</button>
+          <% if item.container_type == "Shopping List" %>
+            <li><strong><%= item.name %></strong>  
 
-          <%= link_to "x", category_item_url(item.category_id, item), method: :delete, data: { disable_with: "<i class='fa fa-spinner fa-spin'></i> Deleting..."}, class: "btn btn-danger btn-xs"%>
-        </li>
-        <% end %>
+              <!--  calls update item modal when bought -->
+              <button class="btn btn-success btn-xs" data-toggle="modal" data-remote="<%= edit_category_item_url(item.category_id, item) %>" data-target=".bs-example-modal1-lg">Bought!</button>
+
+              <!-- delete item from shopping list -->
+              <%= link_to "x", category_item_url(item.category_id, item), method: :delete, data: { disable_with: "<i class='fa fa-spinner fa-spin'></i> Deleting..."}, class: "btn btn-danger btn-xs"%>
+            </li>
+          <% end %>
         <% end %>
       <% end %>
     </div>
 
 
-  </div>
-
-
-</div>
-
-
-
-<!-- items index -->
-
- 
- 
-
-
-<div class="modal fade bs-example-modal1-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      
+    <!-- chatroom messages -->
+    <div class="container">
+      <div id="messages">
+        <%= render 'messages' %>
+      </div>
     </div>
+
+    <!-- modal render -->
+    <div class="modal fade bs-example-modal1-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+      <div  class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <!-- renders a page from the js  -->
+        </div>
+      </div>
+    </div>
+
+    <!-- if not part of the group, prompts user to create their own group -->
+    <% else %>
+      <%= render 'partials/create_group' %>
+    <% end %>
+
   </div>
-</div>
-
-<% else %>
-  <%= render 'partials/create_group' %>
-<% end %>
-
-
-<br>
-
-
-<div class="container">
-
-  <div id="messages">
-    <%= render 'messages' %>
-  </div>
-  </div>
+</div> 
+<!-- ends angular controller -->

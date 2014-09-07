@@ -1,0 +1,26 @@
+<script>
+  app.controller('recipesCtrl', ['$scope', '$http', function($scope, $http) {
+    var input = ['chicken', 'rice'];
+    $scope.search = function() {
+      $http.post('recipesapi/search', input).success(function(data) {
+        $scope.recipes = data;
+      });
+    };
+    $scope.get_recipe = function() {
+      if ($scope.rId) {
+        $http.get('recipesapi/get/' + $scope.rId).success(function(data) {
+          $scope.recipe = data;
+        });
+      }
+    };
+  }]);
+</script>
+<main ng-controller='recipesCtrl'>
+  <button ng-click="search()">Search me some recipes</button>
+  <h1>Recipes</h1>
+  {{ recipes }}
+  <button ng-click="get_recipe()">Search me some recipes</button>
+  <input type="text" ng-model="rId" />
+  <h1>Recipe</h1>
+  {{ recipe }}
+</main>
