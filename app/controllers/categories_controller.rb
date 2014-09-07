@@ -11,6 +11,7 @@ class CategoriesController < ApplicationController
     # new objects breated on that page
     @message = Message.new
     @item = Item.new
+    @other_category = @categories.where(name: "Other").first
 
     # items json to get item counts for container_type
     @all_items = @items.all.map(&:id).to_json
