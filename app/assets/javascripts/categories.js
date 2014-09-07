@@ -69,7 +69,7 @@ app.controller('dragNdrop', ['$scope', '$http', function($scope, $http) {
       $scope.category = category;
       
       console.log("test modal");
-      $('.modal').modal({remote: "http://localhost:3000/categories/" + $scope.category +"/items/" + $scope.item + "/edit"});
+      $('.modal').modal({remote: "http://okfridge.herokuapp.com/categories/" + $scope.category +"/items/" + $scope.item + "/edit"});
     }
 
     $scope.deleteItem = function(category, item, item_id ) {
@@ -79,7 +79,7 @@ app.controller('dragNdrop', ['$scope', '$http', function($scope, $http) {
       if (item.id) {
         console.log("inside the if");
         // saved member
-        $http.delete("http://localhost:3000/categories/" + $scope.category +"/items/" + $scope.item_id);
+        $http.delete("http://okfridge.herokuapp.com/categories/" + $scope.category +"/items/" + $scope.item_id);
           // success(function(data, status, headers, config) {
           // // this callback will be called asynchronously
           // // when the response is available
@@ -101,7 +101,7 @@ app.controller('dragNdrop', ['$scope', '$http', function($scope, $http) {
        $scope.categorySelected = category;
     }
     console.log("this is the container: " + $scope.group);
-    $http.get("http://localhost:3000/groups/" + $scope.group + "/api/items").success(function (data) {
+    $http.get("http://okfridge.herokuapp.com/groups/" + $scope.group + "/api/items").success(function (data) {
     //Convert data to array.
       $scope.itemData = angular.fromJson(angular.fromJson(data));
       console.log($scope.itemData);
@@ -155,7 +155,7 @@ app.controller('dragNdrop', ['$scope', '$http', function($scope, $http) {
       this.className = "";
       
       // sets the path to add new item to container
-      $scope.dropZoneLink = "http://localhost:3000/categories/"+$scope.categorySelected+"/items/new_item";
+      $scope.dropZoneLink = "http://okfridge.herokuapp.com/categories/"+$scope.categorySelected+"/items/new_item";
  
       console.log($scope.dropZoneLink);
       $('.modal').modal({remote: $scope.dropZoneLink});
@@ -206,7 +206,7 @@ app.controller('dragNdrop', ['$scope', '$http', function($scope, $http) {
 
       this.className = "";
       // sets the path to add new item to shopping list
-      $scope.dropZoneLink = "http://localhost:3000/categories/"+$scope.categorySelected+"/items/new_sl";
+      $scope.dropZoneLink = "http://okfridge.herokuapp.com/categories/"+$scope.categorySelected+"/items/new_sl";
       //window.location.href = e.dataTransfer.getData('text');
       // window.location.href = $scope.dropZoneLink;
       $('.modal').modal({remote: $scope.dropZoneLink});
