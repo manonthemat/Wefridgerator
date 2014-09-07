@@ -39,7 +39,6 @@ function readDoorState(){
   } else {
     doorState = 000000;
   }
-  console.log('doorstate: ' + doorState);
   return doorState;
 }
 
