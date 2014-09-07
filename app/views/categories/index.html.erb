@@ -23,7 +23,7 @@
   				<a ng-repeat='c in active_cats()| orderBy:"name":false' ng-href'{{dropZoneLink}}'>
   					<div class="col-md-6 col-md-offset-3 category" draggable="true" ng-mousedown="setCategory(c.id)">
   						<div id="info">	
-                <img ng-src="/assets/{{c.image}}.png"/>
+                <img ng-src="{{c.image}}.png"/>
                 <!-- shows category name on hover -->
   						  <div id="dropdown">{{c.name}}</div>				
   					  </div>
