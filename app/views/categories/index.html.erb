@@ -2,14 +2,18 @@
 <div ng-controller="dragNdrop">
 	<div id="dd-elements">
 		<div id="drag-elements">
-
-      <!-- initializes current groups id -->
+      
+      <!-- initializes current variables into angular -->
       <p ng-init="group = <%= @group.id %>"></p>
+      <p ng-init="all_items = <%= @all_items %>"></p>
+      <p ng-init="refridgerator_items = <%= @refridgerator_items %>"></p>
+      <p ng-init="freezer_items = <%= @freezer_items %>"></p>
+      <p ng-init="pantry_items = <%= @pantry_items %>"></p>
+      <p ng-init="shopping_list_items = <%= @shopping_items %>"></p>
 
       <!-- initalizes category array -->
 			<p ng-init="cats = <%= @category_array %>"></p>
-			<div class="container">
-			 
+			<div class="container">	 
         
       <!-- displays all categories by pagination-->
       <div class="row">
@@ -31,11 +35,11 @@
       <!-- Back a page in pagination -->
       <div class="row">
         <div class="col-md-6">
-          <div class="btn btn-primary col-md-1 col-md-offset-5" ng-show="start_button" ng-click="page_move(-5)">&lt;&lt;</div>
+          <div class="btn btn-primary col-md-1 col-md-offset-5" ng-show="start_button" ng-click="page_move(-5)">&laquo;</div>
         </div>
         <!-- Advance page in pagination -->
         <div class="col-md-6 ">
-          <div class="btn btn-primary col-md-1 col-md-offset-5" ng-show="end_button" ng-click="page_move(5)">&gt;&gt;</div>
+          <div class="btn btn-primary col-md-1 col-md-offset-5" ng-show="end_button" ng-click="page_move(5)">&raquo;</div>
         </div>
       </div>
 		</div>
@@ -45,18 +49,16 @@
   <div class="row">
     <div class="col-md-3 col-md-offset-1">
       <h1 class="container-list-title text-center"><%= @group.name %> Items</h1>
-
-      <!--  calls items filter funtion in js -->
-  
         <!-- filter options dropdown -->
         <div class="dropdown">
           <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-toggle="dropdown">
-            {{filter_view}}
-            <span class="caret"></span>
+            {{filter_view}} Items&nbsp;&nbsp;<div class="pull-right"><span class="badge">{{item_count}}</span>
+            <span class="caret"></span></div>
           </button>
-          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+          <ul class="dropdown-menu item-filter-dropdown" role="menu" aria-labelledby="dropdownMenu1">
             <div class="btn-group">
-              <button type="button" class="btn btn-primary btn-sm" ng-click="filter('All')">All Items</button>
+              <!--  calls items filter funtion in js -->
+              <button type="button" class="btn btn-primary btn-sm" ng-click="filter('All')">All</button>
               <button type="button" class="btn btn-primary btn-sm" ng-click="filter('Refridgerator')">Refridgerator</button>
               <button type="button" class="btn btn-primary btn-sm" ng-click="filter('Freezer')">Freezer</button>
               <button type="button" class="btn btn-primary btn-sm" ng-click="filter('Pantry')">Pantry</button>
@@ -65,10 +67,6 @@
         </div> 
    
       <!-- end button group -->
-
-
-
-       
 
       <% @items.each  do |item| %>
       
