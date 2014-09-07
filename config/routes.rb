@@ -32,5 +32,6 @@ Wefridgerator::Application.routes.draw do
 
   get 'recipes' => 'recipes#index'
   post 'recipesapi/search' => 'recipes#search_with_items_in_wefridgerator'
+  get 'recipesapi/get/:id' => 'recipes#get_recipe'
   get 'test' => 'recipes#inc'
 end
