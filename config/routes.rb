@@ -15,6 +15,7 @@ Wefridgerator::Application.routes.draw do
   get "groups/:id/api/items" => "categories#item_json"
   #delete "containers/:id/api/items" => "items#destroy"
   delete "categories/:category_id/items/:id" => "items#destroy"
+  post "categories/:id/items/speech" => "items#create_speech", as: :new_speech_item
 
 
   resources :groups do
@@ -32,5 +33,6 @@ Wefridgerator::Application.routes.draw do
 
   get 'recipes' => 'recipes#index'
   post 'recipesapi/search' => 'recipes#search_with_items_in_wefridgerator'
+  get 'recipesapi/get/:id' => 'recipes#get_recipe'
   get 'test' => 'recipes#inc'
 end

@@ -20,5 +20,28 @@ class ApplicationController < ActionController::Base
     #Find the groups associated with those user_groups
     Group.where(id: groups)
   end
+
+  def milksay
+    puts " ____________________________________"
+    puts "/ The only thing better than love is \\"
+    puts "\\ milk.                              /"
+    puts " ------------------------------------"
+    puts " \\     ____________"
+    puts "  \\    |__________|"
+    puts "      /           /\\"
+    puts "     /           /  \\"
+    puts "    /___________/___/|"
+    puts "    |          |     |"
+    puts "    |  ==\\ /== |     |"
+    puts "    |   O   O  | \\ \\ |"
+    puts "    |     <    |  \\ \\|"
+    puts "   /|          |   \\ \\"
+    puts "  / |  \\_____/ |   / /"
+    puts " / /|          |  / /|"
+    puts "/||\\|          | /||\\/"
+    puts "    -------------|"
+    puts "        | |    | |"
+    puts "       <__/    \\__>"
+  end
 end
 

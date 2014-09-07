@@ -23,20 +23,21 @@
           <ul class="dropdown-menu" role="menu">
             <% if current_user %>
               <% if current_groups.length >= 1 %>
-                <li class="divider"></li>
                 <% current_groups.each do |g|  %>
-                  <li> 
-                  <%= link_to( g.name, group_categories_url(g), data: { no_turbolink: true}) %> 
-                  </li>
+                  <li><%= link_to g.name, group_categories_url(g), data: { no_turbolink: true} %></li>
+                  <li class="divider"></li>
                 <% end %>
               <% end %>
             <% end %>
-            <li class="divider"></li>
             <li><a href="<%= new_group_path %>">Create New Group</a></li>
           </ul>
         </li>
         <li>
+        <% if current_user %>
           <%= link_to "Log out", session_path, method: :delete, class: "pull-right" %>
+        <% else %>
+          <%= link_to "Log in", new_session_path, class: "pull-right" %>
+        <% end %>
         </li>
       </ul>
     </div><!-- /.navbar-collapse -->
