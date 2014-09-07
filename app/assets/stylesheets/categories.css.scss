@@ -186,3 +186,63 @@ a:hover {
   background-color:transparent;
   padding: 0;
 }
+
+/*dancing drag and drop instructions*/
+  @-webkit-keyframes bounce { 
+      from { }
+      to { -webkit-transform: translateX(-10px); }
+  }
+  @-moz-keyframes bounce { 
+      from { }
+      to { -moz-transform: translateX(-30px); }
+  }
+  @-ms-keyframes bounce { 
+      from { }
+      to { -ms-transform: translateX(-30px); }
+  }
+  @-o-keyframes bounce { 
+      from { }
+      to { -o-transform: translateX(-30px); }
+  }
+  @keyframes bounce { 
+      from { }
+      to { transform: translateX(-30px); }
+  }
+
+  section {
+    margin-top: 40px;
+  }
+
+  em {
+      margin-top: 100px;
+      width: 300px;
+      height: 25px;
+      color:black;
+      left: 50%;
+      bottom: 26px;
+      margin-left: -60px;
+      line-height: 15px;
+      -webkit-border-radius: 5px;
+      -moz-border-radius: 5px;
+      border-radius: 5px;
+      background: rgb(250,184,73);
+      font: 11px "lucida grande", arial, sans-serif;
+      text-align: center;
+      padding: 10px;
+      -webkit-animation: bounce .6s ease infinite alternate;
+      -moz-animation: bounce .6s ease infinite alternate;
+      -ms-animation: bounce .6s ease infinite alternate;
+      -o-animation: bounce .6s ease infinite alternate;
+      animation: bounce .6s ease infinite alternate;
+  }
+
+  em::before, em::after {
+      position: absolute;
+      content: " ";
+      height: 1px;
+      left: 50%;
+      background: #e5eaee;
+      -webkit-box-shadow: 0 1px 1px #bdc9d5;
+      -moz-box-shadow: 0 1px 1px #bdc9d5;
+      box-shadow: 0 1px 1px #bdc9d5;
+  }

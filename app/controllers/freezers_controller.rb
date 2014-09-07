@@ -6,7 +6,9 @@ class FreezersController < ApplicationController
     # get the Temperature from redis (later)
     fresh = @@fresh
     freezer = @@freezer
-    render json: "{fresh: #{fresh}, freezer: #{freezer}}"
+    result = "#{fresh} #{freezer}"
+    result = result.to_json
+    render json: result
   end
 
   def postTemp
