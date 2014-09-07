@@ -136,7 +136,7 @@ app.controller('dragNdrop', ['$scope', '$http', function($scope, $http) {
       this.className = "";
       
       // sets the path to add new item to container
-turn the first link on for heroku
+// turn the first link on for heroku
       $scope.dropZoneLink = "http://okfridge.herokuapp.com/categories/"+$scope.categorySelected+"/items/new_item";
 // turn the second link on for local development
       // $scope.dropZoneLink = "http://localhost:3000/categories/"+$scope.categorySelected+"/items/new_item";
