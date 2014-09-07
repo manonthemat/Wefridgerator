@@ -34,4 +34,7 @@ Wefridgerator::Application.routes.draw do
   post 'recipesapi/search' => 'recipes#search_with_items_in_wefridgerator'
   get 'recipesapi/get/:id' => 'recipes#get_recipe'
   get 'test' => 'recipes#inc'
+
+  get '/freezer/:fresh/:freezer' => 'freezers#postTemp' # route that node.js uses to update the stored temperature values
+  get '/freezer' => 'freezers#getTemp' # route that should be consumed on the front-end by angular
 end
