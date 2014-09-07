@@ -4,6 +4,9 @@ var greenBean = require('green-bean');
 var FRIDGE;
 var VALUE;
 
+var M2X = require('m2x');
+var m2x = new M2X('129fed7301f75579a6e219fdb89d0fec');
+
 
 greenBean.connect('refrigerator', function(fridge) {
   console.log('connected to fridge');
@@ -29,6 +32,12 @@ function postTemp(freshFoodTemp, freezerTemp) {
 //    console.log(resp);
   });
 };
+
+function updateM2X(val) {
+  m2x.feeds.updateStreamValue('3985731ebf9470cf94da51881329fbc3', 'fridge', { "value": val }, function(data) {
+    console.log(data);
+  });
+}
 
 var server = http.createServer();
 server.on('request', function(req, resp) {
