@@ -1,51 +1,33 @@
-<div class="nav_bar">
-</div>
 
-<div class="hero_image">
-</div>
+<br><!-- <div class="nav_bar"></div> -->
 
-<div class="flys">
-</div>
+<div class="hero_image"></div>
 
-<div class="sparkle">
-</div>
+<div class="flys"></div>
 
-<div class="wrap">
-<div class="sidea">
-</div>
-<div class="sideb">
-</div> 
-</div>
+<div class="sparkle"></div>
+
+<!-- <div class="wrap">
+    <div class="sidea"></div>
+    <div class="sideb"></div> 
+</div> -->
 
 
 <% if current_user %>
- <% current_groups.each do |g| %>
- 
-    <li><%= link_to g.name, group_path(g) %></li>
-
+    <% current_groups.each do |g| %>
+        <li><%= link_to g.name, group_path(g) %></li>
+    <% end %>
+<% else %>
+    <section class="user-form">
+        <h1>Sign Up!</h1>
+        <%= form_for @user do |f| %>
+        	<%= f.text_field :first_name, placeholder: 'First name', class: 'form-control' %>
+        	<%= f.text_field :last_name, placeholder: 'Last name', class: 'form-control' %>
+        	<%= f.text_field :email, placeholder: 'Email', class: 'form-control' %>
+        	<%= f.password_field :password, placeholder: 'Password', class: 'form-control' %>
+        	<%= f.password_field :password_confirmation, placeholder: 'Re-type password', class: 'form-control' %>
+        	<%= f.text_field :zipcode, placeholder: 'Zipcode', class: 'form-control' %>
+        	<%= f.submit "Submit", class: 'btn btn-submit' %>
+        <% end %>
+    </section>
 <% end %>
-	<% else %>
-
-
-
-<h1>SIGN UP MOFO!</h1>
-
-<%= form_for @user do |f| %>
-	<%= f.text_field :first_name, placeholder: "First name dude go here" %>
-	<%= f.text_field :last_name, placeholder: "Last name dude go here" %>
-	<%= f.text_field :email, placeholder: "Email dude go here" %>
-	<%= f.password_field :password, placeholder: "Password dude go here" %>
-	<%= f.password_field :password_confirmation, placeholder: "Confirm firme dude go here" %>
-	<%= f.text_field :zipcode, placeholder: "Zipcode dude go here" %>
-
-	<%= f.submit "Submit HERE FOR FRDGES AND %*&*&" %>
-
-<% end %>
-<% end %>
-
-
-
-   
-
-
-

@@ -1,4 +1,7 @@
-<%= form_for @invitee, {url: group_invitees_path(@group)} do |f| %>
-  <%= f.text_area :email, placeholder: "Enter emails", name: "email" %>
-  <%= f.submit %>
-<% end %>
+<section class="user-form">
+    <h1>Invite!</h1>
+    <%= form_for @invitee, {url: group_invitees_path(@group)} do |f| %>
+        <%= f.text_area :email, placeholder: 'Enter email address...', class: 'form-control', rows: 5 %>
+        <%= f.submit "Send", class: 'btn btn-submit' %>
+    <% end %>
+</section>

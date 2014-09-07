@@ -6,8 +6,8 @@ Wefridgerator::Application.routes.draw do
 
   resource :session, only: [:new, :create, :destroy]
 
-  resources :static_pages 
-  
+  resources :static_pages
+
   post "categories/:category_id/items/:id/update" => "items#update_item", as: :update_item
   get "categories/:id/items/new_item" => "items#new_container_item", as: :new_container_item
   get "categories/:id/items/new_sl" => "items#new_shopping_list_item", as: :new_shopping_list_item
@@ -31,4 +31,8 @@ Wefridgerator::Application.routes.draw do
     resources :items, only: [:index, :show, :create, :edit, :update, :destroy]
   end
 
+  get 'recipes' => 'recipes#index'
+  post 'recipesapi/search' => 'recipes#search_with_items_in_wefridgerator'
+  get 'recipesapi/get/:id' => 'recipes#get_recipe'
+  get 'test' => 'recipes#inc'
 end

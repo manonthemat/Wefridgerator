@@ -2,6 +2,9 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails'
 
+# When you HTTParty, you must party hard!
+gem 'httparty'
+
 # Use postgresql as the database for Active Record
 gem 'pg'
 
@@ -44,10 +47,12 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-
-gem 'bootstrap-sass', '~> 3.2.0'
 gem "font-awesome-rails"
+gem 'bootstrap-sass', '~> 3.2.0'
+
 
 # for heroku deployment
 gem 'rails_12factor', group: :production
 gem 'unicorn'
+
+ruby '2.1.1'

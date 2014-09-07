@@ -1,0 +1,25 @@
+<script>
+  app.controller('recipesCtrl', ['$scope', '$http', function($scope, $http) {
+    var input = ['chicken', 'rice'];
+    $scope.search = function() {
+      $http.post('recipesapi/search', input).success(function(data) {
+        $scope.recipes = data;
+      });
+    };
+    $scope.get_recipe = function(rid) {
+      $http.get('recipesapi/get/' + rid).success(function(data) {
+        $scope.recipe = data;
+      });
+    };
+  }]);
+</script>
+<main ng-controller='recipesCtrl'>
+  <button ng-click="search()">Search me some recipes</button>
+  <h1>Recipes</h1>
+  <div ng-repeat="r in recipes.recipes">
+      <h2><a ng-href="{{r.source_url}}" target="_blank">{{r.title}}</a></h2>
+      <img ng-click="get_recipe(r.recipe_id)" ng-src="{{r.image_url}}" />
+  </div>
+  <h1>Recipe Details</h1>
+  {{ recipe }}
+</main>

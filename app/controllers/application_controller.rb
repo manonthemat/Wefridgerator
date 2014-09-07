@@ -1,14 +1,15 @@
 class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
-  protect_from_forgery with: :exception
+  #protect_from_forgery with: :exception
+  protect_from_forgery with: :null_session
   helper_method :current_user
   helper_method :current_groups
 
   def current_user
-  	@current_user ||= User.where(:id => session[:user_id]).first 
+  	@current_user ||= User.where(:id => session[:user_id]).first
   	#where will refer to an array, while find will refer to one id! This will find an id related to the user who logs in
-  	#.first will refer to the id 
+  	#.first will refer to the id
   end
 
   def current_groups
@@ -19,5 +20,28 @@ class ApplicationController < ActionController::Base
     #Find the groups associated with those user_groups
     Group.where(id: groups)
   end
+
+  def milksay
+    puts " ____________________________________"
+    puts "/ The only thing better than love is \\"
+    puts "\\ milk.                              /"
+    puts " ------------------------------------"
+    puts " \\     ____________"
+    puts "  \\    |__________|"
+    puts "      /           /\\"
+    puts "     /           /  \\"
+    puts "    /___________/___/|"
+    puts "    |          |     |"
+    puts "    |  ==\\ /== |     |"
+    puts "    |   O   O  | \\ \\ |"
+    puts "    |     <    |  \\ \\|"
+    puts "   /|          |   \\ \\"
+    puts "  / |  \\_____/ |   / /"
+    puts " / /|          |  / /|"
+    puts "/||\\|          | /||\\/"
+    puts "    -------------|"
+    puts "        | |    | |"
+    puts "       <__/    \\__>"
+  end
 end
-  
+
