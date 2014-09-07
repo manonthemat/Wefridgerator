@@ -37,7 +37,11 @@
           </ul>
         </li>
         <li>
+        <% if current_user %>
           <%= link_to "Log out", session_path, method: :delete, class: "pull-right" %>
+        <% else %>
+          <%= link_to "Log in", new_session_path, class: "pull-right" %>
+        <% end %>
         </li>
       </ul>
     </div><!-- /.navbar-collapse -->

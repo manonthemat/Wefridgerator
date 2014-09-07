@@ -56,3 +56,51 @@ a {
   color: white;
 }
 
+
+
+
+
+
+// Mixins
+@mixin translate-center($x, $y) {
+  left: $x;
+  position: fixed;
+  top: $y;
+  -webkit-transform: translateX(-$x) translateY(-$y);
+  -moz-transform: translateX(-$x) translateY(-$y);
+  -ms-transform: translateX(-$x) translateY(-$y);
+  transform: translateX(-$x) translateY(-$y);
+}
+
+// User Forms
+.user-form {
+  background: rgba(255, 255, 255, .95);
+  border-radius: 1.5em;
+  -webkit-box-shadow: 0 .5em .25em rgba(0, 0, 0, .5);
+  -moz-box-shadow: 0 .5em .25em rgba(0, 0, 0, .5);
+  box-shadow: 0 .5em .25em rgba(0, 0, 0, .5);
+  @include translate-center(50%, 40%);
+  padding: 1em;
+  width: 20em;
+
+  h1 {
+    color: #21aab8;
+    font-family: 'Lemon', serif;
+    margin: 0 auto .35em;
+    text-align: center;
+  }
+
+  .form-control {
+    margin-bottom: .5em;
+  }
+
+  .btn-submit {
+    background: #21aab8;
+    color: #fff;
+    font-family: 'Hammersmith One', serif;
+    display: block;
+    margin: .65em auto 0;
+    text-align: center;
+    width: 80%;
+  }
+}
