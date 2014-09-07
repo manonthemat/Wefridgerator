@@ -1,8 +1,7 @@
 <script>
   app.controller('recipesCtrl', ['$scope', '$http', function($scope, $http) {
-    var input = ['chicken', 'rice'];
     $scope.search = function() {
-      $http.post('recipesapi/search', input).success(function(data) {
+      $http.post('recipesapi/search', $scope.ingredients).success(function(data) {
         $scope.recipes = data;
       });
     };
@@ -31,7 +30,7 @@
 <main class="recipes" ng-controller='recipesCtrl'>
 
   <button class="btn btn-primary" ng-click="search()">Search me some recipes</button>
-
+  <span ng-init="ingredients=<%= current_user.items.all.map(&:name) %>"></span>
   <div ng-show="recipes">
     <div class="row">
       <h1>Recipes</h1>

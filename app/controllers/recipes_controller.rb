@@ -2,15 +2,10 @@ class RecipesController < ApplicationController
   @@api_key = "65e4b128b9dbb66270e2680470eb5b87"
   @@base_url = "http://food2fork.com/api/"
   @@cache = {}
-  @@a = 0
-
-  def inc
-    @@a += 1
-    @a = @@a
-  end
 
   def search_with_items_in_wefridgerator
-    ingredients = ['beef', 'basil']
+    milksay
+    ingredients = params['recipe']['_json']
     if @@cache.include?ingredients
       result = @@cache[ingredients]
     else
