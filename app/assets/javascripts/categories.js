@@ -142,7 +142,7 @@ app.controller('dragNdrop', ['$scope', '$http', function($scope, $http) {
       $scope.dropZoneLink = "http://localhost:3000/categories/"+$scope.categorySelected+"/items/new_item";
  
       console.log($scope.dropZoneLink);
-      $('.modal').modal({remote: $scope.dropZoneLink});
+        $('.modal').modal({remote: $scope.dropZoneLink});
       });
 
     var dropZoneTwo = document.querySelector('#drop-target-two');
