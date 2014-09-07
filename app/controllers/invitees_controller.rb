@@ -26,7 +26,7 @@ class InviteesController < ApplicationController
         UserMailer.signup_email(@invitee).deliver
       end
     end
-    redirect_to group_path(@group)
+    redirect_to group_categories_path(@group)
     # @unsent = emails_given - emails_sent
     # i @unsent.count > 0
     #   render 'new'

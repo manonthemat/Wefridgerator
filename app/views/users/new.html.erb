@@ -13,11 +13,7 @@
 </div> -->
 
 
-<% if current_user %>
-    <% current_groups.each do |g| %>
-        <li><%= link_to g.name, group_path(g) %></li>
-    <% end %>
-<% else %>
+<% if !current_user %>
     <section class="user-form">
         <h1>Sign Up!</h1>
         <%= form_for @user do |f| %>
