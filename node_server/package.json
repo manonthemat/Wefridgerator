@@ -1,0 +1,8 @@
+{
+  "name": "wefridgerator_nserver",
+  "version": "0.0.1",
+  "description": "Node Server to run on the Raspberry Pi for the WeFridgerator",
+  "dependencies": {
+    "green-bean": "~0.1.1"
+  }
+}
