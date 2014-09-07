@@ -13,14 +13,34 @@ greenBean.connect('refrigerator', function(fridge) {
 });
 
 function readTemp() {
-  FRIDGE.displayTemperature.read(function(value) {
-    //value = JSON.stringify(value);
-    //console.log('Temperature: ' + value);
-    var fresh = value['freshFoodTemperature'];
-    var freezer = value['freezerTemperature'];
-    console.log("Fresh: " + fresh + "\nFreezer: " + freezer);
-    postTemp(fresh, freezer);
-  });
+  var fresh, freezer;
+  if(FRIDGE){
+    FRIDGE.displayTemperature.read(function(value) {
+      //value = JSON.stringify(value);
+      //console.log('Temperature: ' + value);
+      fresh = value['freshFoodTemperature'];
+      freezer = value['freezerTemperature'];
+      console.log("Fresh: " + fresh + "\nFreezer: " + freezer);
+      postTemp(fresh, freezer);
+    });
+    return {fresh: fresh, freezer: freezer};
+  } else {
+    //if we aren't plugged into the fridge
+    return {fresh: 55, freezer: 23};
+  }
+}
+
+function readDoorState(){
+  var doorState;
+  if(FRIDGE){
+    FRIDGE.doorState.read(function(value){
+      doorState = value;
+    });
+  } else {
+    doorState = 000000;
+  }
+  console.log('doorstate: ' + doorState);
+  return doorState;
 }
 
 function postTemp(freshFoodTemp, freezerTemp) {
@@ -33,8 +53,13 @@ function postTemp(freshFoodTemp, freezerTemp) {
 var server = http.createServer();
 server.on('request', function(req, resp) {
   resp.writeHead(200, {'Content-Type': 'JSON', 'Access-Control-Allow-Origin': '*'});
-  readTemp();
-  resp.end('updating temperature');
+  var fridgeObj = {};
+  var temp = readTemp();
+  fridgeObj.fresh = temp.fresh;
+  fridgeObj.freezer = temp.freezer;
+  fridgeObj.doorState = readDoorState();
+  resp.write(JSON.stringify(fridgeObj));
+  resp.end();
 });
 
 server.listen(process.argv[2]||1337);

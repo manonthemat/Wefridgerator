@@ -2,11 +2,26 @@ var app = angular.module('WefridgeratorApp', []);
 app.controller('dragNdrop', ['$scope', '$http', function($scope, $http) {
   console.log('angular loaded');
 
+function getFridgeStatus(){
+      $.getJSON('http://localhost:1337', {action: 'getTemp' })
+    .done(function(resp){
+      $("#freezer-settings").find("#fresh").text(resp.fresh);
+      $("#freezer-settings").find("#freezer").text(resp.freezer);
+      $("#freezer-settings").find("#fresh-door").text((parseInt(resp.doorState, 10) % 10) > 0 ? 'Open' : 'Closed');
+      $("#freezer-settings").find("#freezer-door").text((parseInt(resp.doorState, 100) % 10) >= 10 ? 'Open' : 'Closed');
+
+      console.log('got temp'); 
+    });
+}
+
   window.onload = function() {
     $scope.page_start = 0
     $scope.page_end = 5
     console.log("items!!" +$scope.all_items.length);
     
+    getFridgeStatus();
+    setInterval(getFridgeStatus, 1000); 
+
     $scope.active_cats = function() {
       return $scope.cats.slice($scope.page_start, $scope.page_end);
     }
