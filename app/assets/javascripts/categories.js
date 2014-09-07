@@ -195,7 +195,7 @@ app.controller('dragNdrop', ['$scope', '$http', function($scope, $http) {
 // turn the first link on for local development
       $scope.dropZoneLink = "http://localhost:3000/categories/"+$scope.categorySelected+"/items/new_sl";
 
-      $('#new_item').modal({remote: $scope.dropZoneLink});
+      $('.modal').modal({remote: $scope.dropZoneLink});
     });
 
         var langs =
