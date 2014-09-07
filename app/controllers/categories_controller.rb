@@ -2,7 +2,7 @@ class CategoriesController < ApplicationController
 
 
   def index 
-    @shopping_list_items = Item.where(:container_type => "Shopping List")
+    
     @group = Group.find(params[:group_id])
     @categories = Category.where(:group_id => @group)
     @items = Item.where(category_id: @categories.map(&:id))
@@ -12,7 +12,7 @@ class CategoriesController < ApplicationController
     @message = Message.new
     @item = Item.new
     @other_category = @categories.where(name: "Other").first
-
+    @shopping_list_items = Item.where(:container_type => "Shopping List")
     # items json to get item counts for container_type
     @all_items = @items.all.map(&:id).to_json
     @refridgerator_items = @items.where(container_type: "Refridgerator").all.map(&:id).to_json

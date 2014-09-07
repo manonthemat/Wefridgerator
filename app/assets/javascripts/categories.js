@@ -6,7 +6,7 @@ app.controller('dragNdrop', ['$scope', '$http', function($scope, $http) {
     $scope.page_start = 0
     $scope.page_end = 5
     console.log("items!!" +$scope.all_items.length);
-    
+    console.log($scope.cats);
     $scope.active_cats = function() {
       return $scope.cats.slice($scope.page_start, $scope.page_end);
     }
@@ -81,7 +81,7 @@ app.controller('dragNdrop', ['$scope', '$http', function($scope, $http) {
 // turn the first link on for heroku
     // $http.get("http://okfridge.herokuapp.com/groups/" + $scope.group + "/api/items").success(function (data) {
 // turn the first link on for local development
-    $http.get("http:/localhost:3000.com/groups/" + $scope.group + "/api/items").success(function (data) {
+    $http.get("http://localhost:3000/groups/" + $scope.group + "/api/items").success(function (data) {
 
     //Convert data to array.
       $scope.itemData = angular.fromJson(angular.fromJson(data));
@@ -195,7 +195,7 @@ app.controller('dragNdrop', ['$scope', '$http', function($scope, $http) {
 // turn the first link on for local development
       $scope.dropZoneLink = "http://localhost:3000/categories/"+$scope.categorySelected+"/items/new_sl";
 
-      $('.modal').modal({remote: $scope.dropZoneLink});
+      $('#new_item').modal({remote: $scope.dropZoneLink});
     });
 
         var langs =

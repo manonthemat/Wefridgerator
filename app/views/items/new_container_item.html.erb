@@ -1,6 +1,6 @@
 <!-- Login Screen -->
-<div class="newitem">
-  <div class="container-fluid" style="width: 400px">
+<div class="newitem"  >
+  <div class="container">
     <h1>Add new <%= @category.name %>!<img src="/assets/<%= @category.image %>.png"></h1> 
  	    <%= form_for @item, {url: category_items_path(@category)} do |f| %>
         <div class="form-group">
