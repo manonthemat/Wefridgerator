@@ -44,6 +44,14 @@ body {
   background: $main-color;
   color: #fff;
 
+  .test1 {
+    background: pink;
+  }
+
+  .test2 {
+    background: yellow;
+  }
+
   a {
     color: $link-color;
   }
