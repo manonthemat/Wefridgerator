@@ -21,3 +21,6 @@
 /vendor
 
 Gemfile.lock
+
+* Ignore node modules
+/_node_srv/node_modules
