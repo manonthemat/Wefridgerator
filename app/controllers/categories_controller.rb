@@ -1,6 +1,5 @@
 class CategoriesController < ApplicationController
 
-
   def index 
     
     @group = Group.find(params[:group_id])
@@ -20,7 +19,8 @@ class CategoriesController < ApplicationController
     @pantry_items = Item.where(container_type: "Pantry").all.map(&:id).to_json
     @shopping_items = Item.where(container_type: "Shopping List").all.map(&:id).to_json
     @other_category = @categories.where(name: "Other").first
-    # response for message board
+    
+    # response for message board(no instance variables under this)
     respond_to do |format|
       format.html
       format.js

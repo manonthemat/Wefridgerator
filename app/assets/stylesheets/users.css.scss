@@ -6,8 +6,19 @@
 	height: 60px;
 }
 
+.header_image {
+	background: url(wf_header.png); 
+	background-size: cover;
+	margin: 0 auto;
+	width: 960px;
+	height: 480px;
+	z-index: 2;
+	margin-bottom: -150px;
+	margin-top: -150px;
+}
+
 .hero_image {
-	background: url(WF_kitcen.png); 
+	background: url(practice_kitchen.png); 
 	background-size: cover;
 	margin: 0 auto;
 	width: 960px;
