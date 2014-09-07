@@ -1,7 +1,5 @@
 class FreezersController < ApplicationController
-  @@fresh = 67
-  @@freezer = 60
-
+  
   def getTemp
     # get the Temperature from redis (later)
     fresh = @@fresh
