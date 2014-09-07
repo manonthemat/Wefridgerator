@@ -132,4 +132,51 @@ body {
       width: 50%;
     }
   }
+  .group-row {
+    line-height: 40px;
+
+    .row-content {
+      height: 400px;
+      overflow: scroll;
+    }
+
+    .row {
+      margin-right: 0;
+      margin-left: 0;
+    }
+
+    .row-last:nth-child(1) {
+      background-color: darken($main-color, 20%);
+      border-top-right-radius: 15px;
+      border-top-left-radius: 15px;
+      line-height: 40px    }
+
+    .row-last:last-child {
+      background-color: darken($main-color, 20%);
+      border-bottom-right-radius: 15px;
+      border-bottom-left-radius: 15px;
+      margin-bottom: 30px;
+
+    }
+    .odd-row {
+      background-color: lighten($main-color, 20%);
+    }
+    .even-row {
+      background-color: lighten($main-color, 30%);
+    }
+
+    li {
+      font-size: 20px;
+      list-style: none;
+    }
+
+    .group-link {
+      color: white;
+      .group-link:hover{
+        color:white;
+      }
+    }
+    
+  }
+  
 }

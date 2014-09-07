@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
 		@user = User.where(email: params[:session][:email]).first
 		if @user && @user.authenticate(params[:session][:password])
 			session[:user_id] = @user.id.to_s
-			redirect_to user_path(@user)
+			redirect_to groups_path
 		else
 			redirect_to new_session_path
 		end
