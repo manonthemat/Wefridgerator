@@ -198,7 +198,7 @@ app.controller('dragNdrop', ['$scope', '$http', function($scope, $http) {
       $('.modal').modal({remote: $scope.dropZoneLink});
     });
 
-        var langs =
+  var langs =
     [['Afrikaans',       ['af-ZA']],
      ['Bahasa Indonesia',['id-ID']],
      ['Bahasa Melayu',   ['ms-MY']],
@@ -305,6 +305,7 @@ app.controller('dragNdrop', ['$scope', '$http', function($scope, $http) {
           start_img.src = 'assets/mic.gif';
           showInfo('info_no_speech');
           ignore_onend = true;
+          console.log(event.error);
         }
         if (event.error == 'audio-capture') {
           start_img.src = 'assets/mic.gif';
@@ -343,12 +344,14 @@ app.controller('dragNdrop', ['$scope', '$http', function($scope, $http) {
           createEmail();
         }
       };
-
-      recognition.onresult = function(event) {
+      var speech_counter = 0;
+      var post_counter = 0;
+            recognition.onresult = function(event) {
         var interim_transcript = '';
         for (var i = event.resultIndex; i < event.results.length; ++i) {
           if (event.results[i].isFinal) {
             final_transcript += event.results[i][0].transcript;
+            interim_transcript;
           } else {
             interim_transcript += event.results[i][0].transcript;
           }
@@ -360,42 +363,101 @@ app.controller('dragNdrop', ['$scope', '$http', function($scope, $http) {
           showButtons('inline-block');
         }
         
+        var msg = new SpeechSynthesisUtterance('Add what item?');
+        var item = interim_transcript.split(' ');
+        console.log(item); 
+         
+        
+        for (i = 0; i < item.length - 1; i++){
+          var item = interim_transcript.split(' ');
+        if (((item[i] === 'Add') || (item[i] === 'add')) && ((item[i+1] === 'Item') || (item[i+1] === 'item'))) break; 
+            
+          var item = '';
+         
+          $scope.startButton();
+            if (speech_counter < 1){
+               window.speechSynthesis.speak(msg);
+              ++speech_counter;
+            }
+          
+         
 
-        var item = final_span.innerHTML.split(' ');
-        // console.log(item);
-        if ((item[0] === 'Add') || (item[0] === 'add') && (item[1] === 'Item') || (item[1] === 'item')) {
-            console.log(item[2]);
-          var item_to_add = item[2];
-          // $http.post("http://localhost:3000/categories/" + $scope.othercat + "/items/new_speech_item", item_to_add);
-          console.log($scope.othercat);
-
-          // var request = $http({
-          //               method: "post",
-          //               url: "http://localhost:3000/categories/" + $scope.othercat + "/items/speech",
-          //               params: {
-          //                   name: item_to_add
-          //               },
-          //               data: {
-          //                   name: item_to_add
-          //               }
-                       
-          //           });
-      
-          $http({
-            url: "http://okfridge.herokuapp.com/categories/" + $scope.othercat + "/items/speech",
+          setTimeout(function(){$scope.startButton();},4000);
+          
+        var final1 = final_span.innerHTML;
+         
+       if (post_counter < 1){
+         setTimeout(function(){  $http({
+            url: "http://localhost:3000/categories/" + $scope.othercat + "/items/speech",
             method: "POST",
-            data: { item: { name: item_to_add }}
+            data: { item: { name: final1 }}
           })
           .then(function(response) {
                 console.log("yay" + response);
             }, 
             function(response) { // optional
-                console.log("boo" + response);
+                console.log("boo" + response); 
+            }
+          );
+        },26000);
+         ++post_counter;
+       }
+          
+      
+          
+        
+        
+        
+
+        // else if (((item[i] === 'Many') || (item[i] === 'many')) && ((item[i+1] === 'items') || (item[i+1] === 'Items'))) {
+          
+        //   $scope.startButton();        
+        //   var msg = new SpeechSynthesisUtterance('Add what items?');
+        //   window.speechSynthesis.speak(msg);
+        //   setTimeout(function(){$scope.startButton();},2000);          
+        //   var item3 = final_span.innerHTML;
+        
+        //   setTimeout(function(){
+        //   var item3 = final_span.innerHTML.split(', '); 
+        //   console.log(item2);
+        //   for (var j = 0; j < item3.length - 1; ++j) {
+        //   $http({
+        //     url: "http://localhost:3000/categories/" + $scope.othercat + "/items/speech",
+        //     method: "POST",
+        //     data: { item: { name: item3[j] }}
+        //   })
+        //   .then(function(response) {
+        //         console.log("yay" + response);
+        //     }, 
+        //     function(response) { // optional
+        //         console.log("boo" + response);
+        //     }
+        //   );
+        // }
+        // },20000);
+        // }
+      }   
+
+         
+      
+      }
+
+    }
+    function posting(final1) {
+     
+    $http({
+            url: "http://localhost:3000/categories/" + $scope.othercat + "/items/speech",
+            method: "POST",
+            data: { item: { name: final1 }}
+          })
+          .then(function(response) {
+                console.log("yay" + response);
+            }, 
+            function(response) { // optional
+                console.log("boo" + response); 
             }
           );
         }
-      }
-    }
 
     function upgrade() {
       start_button.style.visibility = 'hidden';
@@ -447,6 +509,7 @@ app.controller('dragNdrop', ['$scope', '$http', function($scope, $http) {
     }
 
     $scope.startButton = function(event) {
+    
       if (recognizing) {
         recognition.stop();
         return;
@@ -488,6 +551,7 @@ app.controller('dragNdrop', ['$scope', '$http', function($scope, $http) {
       email_info.style.display = 'none';
     }
   };
+
 
 }]);
 

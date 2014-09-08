@@ -20,8 +20,10 @@
      
       <!-- displays all categories by pagination-->
       <div class="row">
-
-        <div class="col-md-8 col-md-offset-2 text-center food-items">
+        <div class="col-md-2">
+          <section><%= link_to "Get Recipes", recipes_path, class: "btn btn-warning" %></section>
+        </div>
+        <div class="col-md-8 text-center food-items">
           <!-- categories are droppable -->
   				<a ng-repeat='c in active_cats()| orderBy:"name":false' ng-href'{{dropZoneLink}}'>
   					<div class="col-md-6 col-md-offset-3 category" draggable="true" ng-mousedown="setCategory(c.id)">
@@ -198,30 +200,15 @@
          Upgrade to <a href="//www.google.com/chrome">Chrome</a>
          version 25 or later.</p>
     </div>
-    <div class="right">
+    <div class="text-center">
       <button id="start_button" ng-click="startButton(event)">
         <i id="start_img" alt="Start" class="fa fa-microphone"></i></button>
     </div>
-    <div id="results">
+    <div id="results" class="text-center">
       <span id="final_span" class="final"></span>
       <span id="interim_span" class="interim"></span>
     </div>
     <div class="center">
-      <div class="sidebyside" style="text-align:right">
-        <button id="copy_button" class="button" ng-click="copyButton()">
-          Copy and Paste</button>
-        <div id="copy_info" class="info">
-          Press Control-C to copy text.<br>(Command-C on Mac.)
-        </div>
-      </div>
-      <div class="sidebyside">
-        <button id="email_button" class="button" onclick="emailButton()">
-          Create Email</button>
-        <div id="email_info" class="info">
-          Text sent to default email application.<br>
-          (See chrome://settings/handlers to change.)
-        </div>
-      </div>
       <div id="div_language">
         <select id="select_language" onchange="updateCountry()"></select>
         &nbsp;&nbsp;
