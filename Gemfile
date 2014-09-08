@@ -5,6 +5,9 @@ gem 'rails'
 # When you HTTParty, you must party hard!
 gem 'httparty'
 
+# Use of M2X makes life easier
+gem 'm2x'
+
 # Use postgresql as the database for Active Record
 gem 'pg'
 

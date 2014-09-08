@@ -17,12 +17,9 @@ greenBean.connect('refrigerator', function(fridge) {
 
 function readTemp() {
   FRIDGE.displayTemperature.read(function(value) {
-    //value = JSON.stringify(value);
-    //console.log('Temperature: ' + value);
     var fresh = value['freshFoodTemperature'];
     var freezer = value['freezerTemperature'];
     console.log("Fresh: " + fresh + "\nFreezer: " + freezer);
-//    postTemp(fresh, freezer);
     m2x.feeds.updateStreamValue('38dcdb5b1685de295f5bba72fe6569a0', 'freshtemperature', { "at": new Date().toISOString(), "value": fresh }, function(data) {
       console.log(data);
     });
@@ -32,19 +29,6 @@ function readTemp() {
   });
 }
 
-
-function postTemp(freshFoodTemp, freezerTemp) {
-  var url = 'http://okfridge.herokuapp.com/freezer/'+freshFoodTemp+'/'+freezerTemp;
-  http.get(url, function(resp) {
-//    console.log(resp);
-  });
-};
-
-function updateM2X(val) {
-  m2x.feeds.updateStreamValue('3985731ebf9470cf94da51881329fbc3', 'fridge', { "value": val }, function(data) {
-    console.log(data);
-  });
-}
 
 var server = http.createServer();
 server.on('request', function(req, resp) {
