@@ -57,6 +57,6 @@ gem 'bootstrap-sass', '~> 3.2.0'
 gem 'rails_12factor', group: :production
 gem 'unicorn'
 
-gem 'm2x', '~>0.0.8'
+gem 'm2x'
 
 ruby '2.1.1'
