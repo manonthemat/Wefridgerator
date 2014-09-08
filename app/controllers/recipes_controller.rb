@@ -11,7 +11,8 @@ class RecipesController < ApplicationController
     if @@cache.include?ingredients
       result = @@cache[ingredients]
     else
-      r = HTTParty.get(@@base_url + "search?key=" + @@api_key + "&q=" + ingredients.join(','))
+      url = @@base_url + "search?key=" + @@api_key + "&q=" + ingredients.join(',')
+      r = HTTParty.get(URI.escape(url))
       result = JSON.parse(r)
       @@cache[ingredients] = result
     end
