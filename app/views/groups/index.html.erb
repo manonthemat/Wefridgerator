@@ -12,7 +12,7 @@
           <% else %>
             <div class="row even-row">
           <% end %>
-            <li><%= link_to g.name, group_categories_path(g) %></li>
+            <li><%= link_to g.name, group_categories_path(g), data: { no_turbolink: true} %></li>
           </div>
           <% group_count += 1 %>
       <% end %>

@@ -27,7 +27,7 @@
   });
 </script>
 
-<main class="recipes" ng-controller='recipesCtrl'>
+<main class="recipes" ng-controller='recipesCtrl' ngcloak>
 
   <button class="btn btn-primary" ng-click="search()">Search me some recipes</button>
   <span ng-init="ingredients=<%= current_user.items.all.map(&:name) %>"></span>

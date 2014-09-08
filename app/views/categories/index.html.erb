@@ -21,7 +21,7 @@
       <!-- displays all categories by pagination-->
       <div class="row">
         <div class="col-md-2">
-          <section><%= link_to "Get Recipes", recipes_path, class: "btn btn-warning" %></section>
+          <section><%= link_to "Get Recipes", recipes_path, class: "btn btn-warning", data: { no_turbolink: true} %></section>
         </div>
         <div class="col-md-8 text-center food-items">
           <!-- categories are droppable -->
