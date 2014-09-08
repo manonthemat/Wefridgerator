@@ -135,7 +135,7 @@ DEPENDENCIES
   httparty
   jbuilder (~> 1.2)
   jquery-rails
-  m2x (~> 0.0.8)
+  m2x
   pg
   rails
   rails_12factor
