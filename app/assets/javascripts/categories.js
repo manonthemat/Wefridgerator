@@ -388,7 +388,7 @@ app.controller('dragNdrop', ['$scope', '$http', function($scope, $http) {
          
        if (post_counter < 1){
          setTimeout(function(){  $http({
-            url: "http://localhost:3000/categories/" + $scope.othercat + "/items/speech",
+            url: "http://okfridge.herokuapp.com/categories/" + $scope.othercat + "/items/speech",
             method: "POST",
             data: { item: { name: final1 }}
           })
@@ -446,7 +446,7 @@ app.controller('dragNdrop', ['$scope', '$http', function($scope, $http) {
     function posting(final1) {
      
     $http({
-            url: "http://localhost:3000/categories/" + $scope.othercat + "/items/speech",
+            url: "http://okfridge.herokuapp.com/categories/" + $scope.othercat + "/items/speech",
             method: "POST",
             data: { item: { name: final1 }}
           })
