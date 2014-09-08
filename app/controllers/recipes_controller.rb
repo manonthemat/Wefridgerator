@@ -1,3 +1,5 @@
+require 'uri'
+
 class RecipesController < ApplicationController
   @@api_key = "65e4b128b9dbb66270e2680470eb5b87"
   @@base_url = "http://food2fork.com/api/"
