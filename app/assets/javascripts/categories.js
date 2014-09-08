@@ -384,13 +384,13 @@ app.controller('dragNdrop', ['$scope', '$http', function($scope, $http) {
 
           setTimeout(function(){$scope.startButton();},4000);
           
-        var final1 = final_span.innerHTML;
+        var final1 = final_span.innerHTML.split(' ');
          
        if (post_counter < 1){
          setTimeout(function(){  $http({
             url: "http://okfridge.herokuapp.com/categories/" + $scope.othercat + "/items/speech",
             method: "POST",
-            data: { item: { name: final1 }}
+            data: { item: { name: final1[0] }}
           })
           .then(function(response) {
                 console.log("yay" + response);
@@ -443,21 +443,21 @@ app.controller('dragNdrop', ['$scope', '$http', function($scope, $http) {
       }
 
     }
-    function posting(final1) {
+    // function posting(final1) {
      
-    $http({
-            url: "http://okfridge.herokuapp.com/categories/" + $scope.othercat + "/items/speech",
-            method: "POST",
-            data: { item: { name: final1 }}
-          })
-          .then(function(response) {
-                console.log("yay" + response);
-            }, 
-            function(response) { // optional
-                console.log("boo" + response); 
-            }
-          );
-        }
+    // $http({
+    //         url: "http://okfridge.herokuapp.com/categories/" + $scope.othercat + "/items/speech",
+    //         method: "POST",
+    //         data: { item: { name: final1 }}
+    //       })
+    //       .then(function(response) {
+    //             console.log("yay" + response);
+    //         }, 
+    //         function(response) { // optional
+    //             console.log("boo" + response); 
+    //         }
+    //       );
+    //     }
 
     function upgrade() {
       start_button.style.visibility = 'hidden';
