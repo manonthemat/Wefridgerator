@@ -1,7 +1,7 @@
 <script>
   app.controller('fridgeCtrl', ['$scope', '$http', function($scope, $http) {
-    $scope.freshTemp = 67;
-    $scope.freezerTemp = 60;
+//    $scope.freshTemp = 67;
+//    $scope.freezerTemp = 60;
     $scope.getTemp = function() {
       $http.get('freezer').success(function(data) {
         console.log(data);
@@ -16,7 +16,7 @@
 
 <div class="header_image"></div>
 <div ng-controller="fridgeCtrl">
-  <p ng-mouseenter="getTemp()">Temperature in the fridge: {{freshTemp}}F<br/>Temperature in the freezer: {{freezerTemp}}F</p>
+  <p ng-show="freshTemp" ng-mouseenter="getTemp()">Temperature in the fridge: {{freshTemp}}F<br/>Temperature in the freezer: {{freezerTemp}}F</p>
 </div>
 
 <div class="hero_image"></div>
