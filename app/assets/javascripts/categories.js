@@ -1,5 +1,10 @@
 var app = angular.module('WefridgeratorApp', []);
 app.controller('dragNdrop', ['$scope', '$http', function($scope, $http) {
+
+angular g module WefridgeratorApp app
+angular g controller app dragNdrop $scope $http
+angular g factory app Model dragNdrop
+
   console.log('angular loaded');
 
   window.onload = function() {
@@ -385,7 +390,7 @@ app.controller('dragNdrop', ['$scope', '$http', function($scope, $http) {
           setTimeout(function(){$scope.startButton();},4000);
           
         var final1 = final_span.innerHTML.split(' ');
-         
+        console.log(final1);
        if (post_counter < 1){
          setTimeout(function(){  $http({
             url: "http://okfridge.herokuapp.com/categories/" + $scope.othercat + "/items/speech",
@@ -399,7 +404,7 @@ app.controller('dragNdrop', ['$scope', '$http', function($scope, $http) {
                 console.log("boo" + response); 
             }
           );
-        },26000);
+        },10000);
          ++post_counter;
        }
           
