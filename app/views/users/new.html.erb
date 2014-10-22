@@ -1,6 +1,6 @@
 <% if !current_user %>
     <section class="user-form">
-        <h1>Sign Up!</h1>
+        <h1>Sign Up for Wefridgerator!</h1>
         <%= form_for @user do |f| %>
         	<%= f.text_field :first_name, placeholder: 'First name', class: 'form-control' %>
         	<%= f.text_field :last_name, placeholder: 'Last name', class: 'form-control' %>
