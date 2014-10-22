@@ -13469,9 +13469,9 @@ return jQuery;
 var app = angular.module('WefridgeratorApp', []);
 app.controller('dragNdrop', ['$scope', '$http', function($scope, $http) {
 
-angular g module WefridgeratorApp app
-angular g controller app dragNdrop $scope $http
-angular g factory app Model dragNdrop
+// angular g module WefridgeratorApp app
+// angular g controller app dragNdrop $scope $http
+// angular g factory app Model dragNdrop
 
   console.log('angular loaded');
 
@@ -14028,14 +14028,6 @@ angular g factory app Model dragNdrop
 
 }]);
 
-(function() {
-
-
-}).call(this);
-(function() {
-
-
-}).call(this);
 // This is a manifest file that'll be compiled into application.js, which will include all the files
 // listed below.
 //
