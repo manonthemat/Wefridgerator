@@ -18,9 +18,7 @@ p {
 	padding: 0 auto;
 	width: 970px;
 	height: 60px;
-	border-color: black;
-	border-width: 2px;
-	border-style: dotted;
+
 	margin: 0 auto;
 	text-align: center;
 }
@@ -29,6 +27,19 @@ p {
 	background: url(WEFridge_logo.png);
 
 }*/
+
+.welcome_image {
+	max-width: 300px;
+	margin-top: 20px;
+
+}
+
+.image-description {
+	margin-top: 50px;
+	font-size: 22px;
+	font-family: "Hammersmith One";
+	color: rgb(131, 41, 30);
+}
 
 .wefridge_bg {
   background: url(WEKitchen3.png);
@@ -42,30 +53,41 @@ p {
 }
 
 .content {
-	width: 970px;
-	height: 144px;
-	border-color: black;
-	border-width: 2px;
-	border-style: dotted;
-	margin: 0 auto;
+	font-size: 50px;
+	width: 960px;
+	height: 184px;	
+	margin: 135px auto 0px;
+	padding: 50px 20px;
+	font-family: "Hammersmith One";
+	background-color: rgb(131, 41, 30);
 }
 
 .content2 {
-	width: 970px;
-	height: 450px;
-	border-color: black;
-	border-width: 2px;
-	border-style: dotted;
+	font-size: 26px;
+	padding: 50px 20px;
+	width: 960px;
+	height: 300px;
 	margin: 0 auto;
+	font-family: "Hammersmith One";
+	background-color: rgb(131, 41, 30);
 }
 
 .content3{
-	width: 970px;
-	height: 704px;
-	border-color: black;
-	border-width: 2px;
-	border-style: dotted;
+	width: 960px;
+	height: 400px;
 	margin: 0 auto;
+}
+
+.content4{
+	width: 960px;
+	height: 300px;
+	margin: 0 auto;
+}
+.btn-large {
+	padding: 40px 0;
+	height: 150px;
+	width: 300px;
+	font-size: 40px;
 }
 
 /*

@@ -1,6 +1,6 @@
 Wefridgerator::Application.routes.draw do
   get "invitees/new"
-  root 'users#new'
+  root 'static_pages#welcome'
 
   resources :users
 

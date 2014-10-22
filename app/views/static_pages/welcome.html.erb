@@ -1,46 +1,57 @@
-  <div class="nav_bar">
-  </div>
+<script>
+  app.controller('fridgeCtrl', ['$scope', '$http', function($scope, $http) {
+//    $scope.freshTemp = 67;
+//    $scope.freezerTemp = 60;
+    $scope.getTemp = function() {
+      $http.get('freezer').success(function(data) {
+        console.log(data);
+        data = data.replace('"', '').split(' ');
+        $scope.freshTemp = data[0];
+        $scope.freezerTemp = data[1].replace('"', '');
+      });
+    };
+    $scope.getTemp();
+  }]);
+</script>
 
-  <div class="wefridge_bg text-center">
-  </div> 
+<div class="header_image"></div>
+<!-- <div ng-controller="fridgeCtrl">
+  <p ng-show="freshTemp" ng-mouseenter="getTemp()">Temperature in the fridge: {{freshTemp}}F<br/>Temperature in the freezer: {{freezerTemp}}F</p>
+</div>
+ -->
+<div class="hero_image"></div>
 
-  <div class="content text-center">
-  <img src="WEFridgelogo.png">
-  	<h4> WELCOME TO REFRIDGERATOR </h4>
-	  	<p>
-	  	Refridgerator is the only place where people in 
-	  	shared living spaces can claim what they rightfully
-	  	own. Whether its left overs or milk, we want you to 
-	  	feel secure storing food in your fridge.  
-  </div> 
+<div class="flys"></div>
 
-  <div class="content2">
-  </div> 
+<div class="sparkle"></div>
+<div class="content text-center">Wefridgerator is a social Refridgerator management system.</div>
+<div class="content2 text-center">
+	Easily manage items between your refridgerator and shopping list.<br><br>
+	Find recipes based on items in your kitchen.<br><br>
+	Sort items by expiration date to help prevent food waste.<br>
+</div>
 
-  <div class="content3">
-  </div>
+<div class="content3 row">
+	<div class="col-md-4 text-center">
+		<div class="image-description">Drag items to your refridgerator, freezer or pantry.</div>
+		<%= image_tag "items.png", class: "welcome_image img" %>
+	</div>
+	<div class="col-md-4 text-center">
+		<div class="image-description">When you run out, add to shopping list with one click. When you buy easily add it back to your kitchen.</div>
+		<%= image_tag "shoppinglist.png", class: "welcome_image img" %>
+	</div>
+	<div class="col-md-4 text-center">
+		<div class="image-description">Group chat forum for members within a private fridge</div>
+		<%= image_tag "forum.png", class: "welcome_image img" %>
+	</div>
+</div>
+<div class="content4 text center">
+	<%= link_to "Join", new_user_path, class: "text-center btn btn-danger btn-large" %>
+</div>
 
-<% if current_user %>
- <% current_groups.each do |g| %>
- 
-    <li><%= link_to g.name, group_path(g) %></li>
-
-<% end %>
-	<% else %>
 
 
-<h1>SIGN UP MOFO!</h1>
-
-<%= form_for @user do |f| %>
-	<%= f.text_field :first_name, placeholder: "First name dude go here" %>
-	<%= f.text_field :last_name, placeholder: "Last name dude go here" %>
-	<%= f.text_field :email, placeholder: "Email dude go here" %>
-	<%= f.password_field :password, placeholder: "Password dude go here" %>
-	<%= f.password_field :password_confirmation, placeholder: "Confirm firme dude go here" %>
-	<%= f.text_field :zipcode, placeholder: "Zipcode dude go here" %>
-
-	<%= f.submit "Submit HERE FOR FRDGES AND %*&*&" %>
-
-<% end %>
-<% end %>
-
+<!-- <div class="wrap">
+    <div class="sidea"></div>
+    <div class="sideb"></div> 
+</div> -->
