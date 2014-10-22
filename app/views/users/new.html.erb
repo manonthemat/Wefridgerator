@@ -1,4 +1,3 @@
-<% if !current_user %>
     <section class="user-form">
         <h1>Sign Up for Wefridgerator!</h1>
         <%= form_for @user do |f| %>
@@ -11,4 +10,4 @@
         	<%= f.submit "Submit", class: 'btn btn-submit' %>
         <% end %>
     </section>
-<% end %>
+
