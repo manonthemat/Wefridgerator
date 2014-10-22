@@ -1,9 +1,9 @@
 var app = angular.module('WefridgeratorApp', []);
 app.controller('dragNdrop', ['$scope', '$http', function($scope, $http) {
 
-angular g module WefridgeratorApp app
-angular g controller app dragNdrop $scope $http
-angular g factory app Model dragNdrop
+// angular g module WefridgeratorApp app
+// angular g controller app dragNdrop $scope $http
+// angular g factory app Model dragNdrop
 
   console.log('angular loaded');
 
